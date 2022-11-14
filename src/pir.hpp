@@ -11,7 +11,8 @@ private:
     unsigned int pin;
 public:
     /**
-     * @brief Construct a new Pir object
+     * @brief Construct a new Pir object, calls a delay
+     * to calibrate the sensor
      * 
      * @param pin the pin the pir is connected to
      */
