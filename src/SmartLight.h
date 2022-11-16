@@ -1,14 +1,13 @@
 #ifndef __SMARTLIGHT_H__
 #define __SMARTLIGHT_H__
-#include "Task.h"
+#include "TaskImpl.cpp"
 
-class SmartLight : public Task
+class SmartLight : public TaskImpl
 {
     private: 
         int La; 
         int Pir;
         int LS;
-        int period;
 
     public:
         SmartLight(int La, int Pir, int LS, int period);

@@ -4,9 +4,11 @@
 class Task
 {
     public:
-        //virtual void init(int period) = 0;
+        virtual void init(int period) = 0;
         virtual void tick() = 0;
         virtual void removeTask() = 0;
+    protected:
+    int period;
 };
 
 #endif 
