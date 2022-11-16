@@ -2,7 +2,7 @@
 
 class TaskImpl : public Task
 {
-    public:
+    protected:
     void init(int period)
     {
         this->period = period;
