@@ -1,4 +1,5 @@
 #include "sonar.hpp"
+#include <Arduino.h>
 
 Sonar::Sonar(unsigned int trigPin, unsigned int echoPin)
 {
