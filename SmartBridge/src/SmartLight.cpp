@@ -6,14 +6,18 @@ SmartLight::SmartLight(int La, int Pir, int LS, int period)
     this->La = La;
     this->Pir = Pir;
     this->LS = LS;
-    this->init(period);
+    this->period = period;
     pinMode(La, OUTPUT);
     pinMode(Pir, INPUT);
     pinMode(LS, INPUT);
 }
 
-@override
-SmartLight::tick()
+void SmartLight::tick()
+{
+    Serial.println("prova");
+}
+
+void SmartLight::removeTask()
 {
 
 }
