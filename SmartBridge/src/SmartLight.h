@@ -11,8 +11,6 @@ class SmartLight : public TaskImpl
 
     public:
         SmartLight(int La, int Pir, int LS, int period);
-        void tick();
-        void removeTask();
 };
 
 #endif

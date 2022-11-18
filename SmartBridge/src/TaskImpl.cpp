@@ -1,10 +1,6 @@
-#include "Task.h"
+#include "TaskImpl.hpp"
 
-class TaskImpl : public Task
+void TaskImpl::init(int period)
 {
-    protected:
-    void init(int period)
-    {
-        this->period = period;
-    }
-};
+    this->period = period;
+}

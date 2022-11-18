@@ -11,3 +11,9 @@ SmartLight::SmartLight(int La, int Pir, int LS, int period)
     pinMode(Pir, INPUT);
     pinMode(LS, INPUT);
 }
+
+@override
+SmartLight::tick()
+{
+
+}

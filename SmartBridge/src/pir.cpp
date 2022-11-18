@@ -4,6 +4,7 @@
 Pir::Pir(unsigned int pin)
 {
     this->pin = pin;
+    pinMode(this->pin, INPUT);
     delay(this->CALIBRATION_TIME);
 }
 
