@@ -3,6 +3,8 @@
 
 Sonar::Sonar(unsigned int trigPin, unsigned int echoPin)
 {
+    pinMode(trigPin, OUTPUT);
+    pinMode(echoPin, INPUT);
     this->trigPin = trigPin;
     this->echoPin = echoPin;
 }

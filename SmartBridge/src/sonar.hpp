@@ -3,7 +3,7 @@
 
 #include "sensor.hpp"
 
-class Sonar : public Sensor
+class Sonar
 {
 private:
     // The speed of sound, assuming the current temp is 20C
