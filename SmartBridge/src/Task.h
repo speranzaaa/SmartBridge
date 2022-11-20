@@ -5,11 +5,11 @@ class Task
 {
     public:
         virtual void tick() = 0;
-        virtual void removeTask() = 0;
+        unsigned long getPeriod();
     protected:
-        void init(int period);
+        void init(unsigned long period);
     private:
-        int period;
+        unsigned long period;
 };
 
 #endif 

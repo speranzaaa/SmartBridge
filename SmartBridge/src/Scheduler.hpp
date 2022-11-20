@@ -1,19 +1,12 @@
 #ifndef __SCHEDULER_H__
 #define __SCHEDULER_H__
 
-#include <TimerOne.h>
-#include "Task.h"
-#define MAX_TASKS 10
+#include "task.h"
 
-class Scheduler{
-private:
-    int basePeriod;
-    int nTasks;
-    Task* taskList[MAX_TASKS];
+class Scheduler {
 public:
-    void init(int basePeriod);
-    virtual bool addTask(Task* task);
-    virtual void schedule();
+    virtual void schedule() = 0;
+    virtual void addTask(Task* task) = 0;
 };
 
 #endif

@@ -1,6 +1,9 @@
-#include "Task.h"
+#include "task.h"
 
-void Task::init(int period)
-{
+void Task::init(unsigned long period) {
     this->period = period;
+}
+
+unsigned long Task::getPeriod() {
+    return this->period;
 }
