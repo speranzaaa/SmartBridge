@@ -18,7 +18,6 @@ public:
      * @param echopin the number of the echo pin
      */
     Sonar(unsigned int trigPin, unsigned int echopin);
-    ~Sonar();
     /**
      * @brief Get the distance
      * 

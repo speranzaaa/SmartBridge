@@ -9,10 +9,6 @@ Sonar::Sonar(unsigned int trigPin, unsigned int echoPin)
     this->echoPin = echoPin;
 }
 
-Sonar::~Sonar()
-{
-}
-
 double Sonar::getDistance()
 {
     digitalWrite(this->trigPin, LOW);
