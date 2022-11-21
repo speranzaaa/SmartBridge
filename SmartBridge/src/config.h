@@ -7,6 +7,4 @@ enum Status {
     ALARM
 };
 
-Status currentStatus = NORMAL;
-
 #endif

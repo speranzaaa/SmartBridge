@@ -1,6 +1,6 @@
 #ifndef __SMARTLIGHT_H__
 #define __SMARTLIGHT_H__
-#include "task.h"
+#include "Task.h"
 
 class SmartLight : public Task
 {

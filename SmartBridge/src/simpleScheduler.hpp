@@ -1,7 +1,7 @@
 #ifndef __SIMPLE_SCHEDULER_H
 #define __SIMPLE_SCHEDULER_H
 
-#include "scheduler.hpp"
+#include "Scheduler.hpp"
 
 #define MAX_TASKS 10
 

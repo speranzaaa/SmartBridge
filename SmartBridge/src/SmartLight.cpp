@@ -1,4 +1,4 @@
-#include "smartLight.h"
+#include "SmartLight.h"
 #include <Arduino.h>
 
 SmartLight::SmartLight(int La, int Pir, int LS, int period)
