@@ -41,4 +41,5 @@ void BlinkingLed::tick() {
             break;
         }
     }
+    this->elapsedTime = currentTime;
 }
