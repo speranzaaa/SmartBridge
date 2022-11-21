@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "BlinkingLed.h"
 #include "config.h"
+bool debug = false;
 
 Status currentStatus = NORMAL;
 

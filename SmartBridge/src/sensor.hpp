@@ -5,13 +5,10 @@
  * @brief Class that defines a generic sensor 
  * 
  */
-class Sensor
-{
-private:
-protected:
-    Sensor();
+class Sensor {
 public:
-    ~Sensor();
+    Sensor();
+    virtual ~Sensor() = 0;
 };
 
 #endif

@@ -1,6 +1,8 @@
 #include "pir.hpp"
 #include "Arduino.h"
 
+extern bool debug;
+
 Pir::Pir(unsigned int pin)
 {
     this->pin = pin;

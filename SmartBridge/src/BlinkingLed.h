@@ -24,6 +24,7 @@ public:
 private:
     Led led;
     unsigned long lastActionTime = 0;
+    unsigned long elapsedTime = 0;
 
 };
 
