@@ -26,10 +26,13 @@ class Task
          * @param period the period of the task in milliseconds.
          */
         void init(unsigned long period);
+        /**
+         * @brief Method that is called on the ticking of the task's period.
+         */
         virtual void toExecute() = 0;
     private:
         unsigned long period;
-        unsigned long elapsedTime = 0;
+        unsigned long lastExecuted = 0;
 };
 
 #endif 

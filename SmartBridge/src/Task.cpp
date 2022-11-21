@@ -11,8 +11,11 @@ unsigned long Task::getPeriod() {
 
 void Task::tick() {
     unsigned long currentTime = millis();
-    if (currentTime - this->elapsedTime >= this->getPeriod()) {
+    if (currentTime - this->lastExecuted >= this->getPeriod()) {
+        #ifdef __DEBUG__
+            Serial.println("Executing task.");
+        #endif
         this->toExecute();
+        this->lastExecuted = currentTime;
     }
-    this->elapsedTime = currentTime;
 }
