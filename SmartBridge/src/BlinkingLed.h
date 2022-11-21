@@ -21,6 +21,9 @@ public:
     BlinkingLed(unsigned long period, int ledPin);
     void tick();
 
+protected:
+    void toExecute();
+
 private:
     Led led;
     unsigned long lastActionTime = 0;

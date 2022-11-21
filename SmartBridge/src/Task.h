@@ -12,7 +12,7 @@ class Task
          * @brief Method used to call the task execution.
          * 
          */
-        virtual void tick() = 0;
+        void tick();
         /**
          * @brief Get the period of the task
          * 
@@ -26,8 +26,10 @@ class Task
          * @param period the period of the task in milliseconds.
          */
         void init(unsigned long period);
+        virtual void toExecute() = 0;
     private:
         unsigned long period;
+        unsigned long elapsedTime = 0;
 };
 
 #endif 

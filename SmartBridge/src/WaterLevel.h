@@ -8,6 +8,9 @@ public:
     WaterLevel(int trigPin, int echoPin, unsigned long period);
     void tick();
 
+protected:
+    void toExecute();
+
 private:
     Sonar* sonar;
     unsigned long elapsedTime = 0;

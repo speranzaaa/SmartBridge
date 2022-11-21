@@ -11,7 +11,7 @@ WaterLevel::WaterLevel(int trigPin, int echoPin, unsigned long period) {
     this->init(period);
 }
 
-void WaterLevel::tick() {
+void WaterLevel::toExecute() {
     unsigned long currentTime = millis();
     if (currentTime - this->elapsedTime >= this->getPeriod()) {
         double currDistance = this->sonar->getDistance();

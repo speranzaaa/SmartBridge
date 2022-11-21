@@ -18,7 +18,9 @@ class SmartLight : public Task
         Pir* pir;
         LightSensor* lightSensor;
         unsigned long timeDetected = 0;
-        unsigned long elapsedTime = 0;
+
+    protected:
+        void toExecute();
 
     public:
         /**
