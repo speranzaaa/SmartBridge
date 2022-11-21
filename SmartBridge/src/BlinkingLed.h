@@ -19,7 +19,6 @@ public:
      * @param ledPin the pin number of the led the task will use.
      */
     BlinkingLed(unsigned long period, int ledPin);
-    void tick();
 
 protected:
     void toExecute();
@@ -27,8 +26,10 @@ protected:
 private:
     Led led;
     unsigned long lastActionTime = 0;
-    unsigned long elapsedTime = 0;
-
+    /**
+     * @brief used to turn on the led when the status switches from normal to pre-alarm
+     */
+    bool wasNormal = false;
 };
 
 #endif
