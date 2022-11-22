@@ -7,10 +7,10 @@ import serial.tools.list_ports
 
 def chooseport():
     ports = list(serial.tools.list_ports.comports())
-    for p in ports:
-        print(p)
-    port = input("Enter port number: ")
-    return port
+    for i in range(len(ports)):
+        print(f"{i} -> {ports[i]}")
+    port = int(input("Enter port number: "))
+    return str.split(str(ports[port]))[0]
 
 arduino = serial.Serial(chooseport() , 9600, timeout=.1)
 
