@@ -1,5 +1,5 @@
 #include "WaterLevel.h"
-#include "config.h"
+#include "Config.h"
 #include <Arduino.h>
 #define WL_MAX 3.0
 #define WL_2 5.0

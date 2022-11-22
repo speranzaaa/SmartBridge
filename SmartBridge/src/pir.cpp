@@ -1,4 +1,4 @@
-#include "pir.hpp"
+#include "Pir.hpp"
 #include "Arduino.h"
 
 extern bool debug;

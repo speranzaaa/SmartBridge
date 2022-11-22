@@ -1,7 +1,7 @@
 #ifndef LED
 #define LED
 
-#include "light.h"
+#include "Light.h"
 
 class Led : public Light {
 public:

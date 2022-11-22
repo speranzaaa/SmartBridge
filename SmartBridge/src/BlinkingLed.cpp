@@ -1,7 +1,7 @@
 #include "BlinkingLed.h"
 #define __DEBUG__
 #include <Arduino.h>
-#include "config.h"
+#include "Config.h"
 #define BLINKING_TIME 2000
 extern Status currentStatus;
 

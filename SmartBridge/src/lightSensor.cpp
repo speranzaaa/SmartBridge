@@ -1,4 +1,4 @@
-#include "lightSensor.h"
+#include "LightSensor.h"
 #include <Arduino.h>
 #include <string.h>
 #define DAYLIGHT 50

@@ -1,6 +1,6 @@
 #include "SmartLight.h"
 #include <Arduino.h>
-#include "config.h"
+#include "Config.h"
 extern bool debug;
 #define LIGHT_TIME 10000
 

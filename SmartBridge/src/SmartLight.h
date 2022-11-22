@@ -1,9 +1,9 @@
 #ifndef __SMARTLIGHT_H__
 #define __SMARTLIGHT_H__
 #include "Task.h"
-#include "pir.hpp"
-#include "led.h"
-#include "lightSensor.h"
+#include "Pir.hpp"
+#include "Led.h"
+#include "LightSensor.h"
 
 class SmartLight : public Task
 {

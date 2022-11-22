@@ -1,7 +1,7 @@
 #ifndef __PIR_H__
 #define __PIR_H__
 
-#include "sensor.hpp"
+#include "Sensor.hpp"
 
 /**
  * @brief Class that controls a pir sensor

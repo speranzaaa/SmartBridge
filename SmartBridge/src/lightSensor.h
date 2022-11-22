@@ -1,6 +1,6 @@
 #ifndef __LIGHT_SENSOR_H__
 #define __LIGHT_SENSOR_H__
-#include "sensor.hpp"
+#include "Sensor.hpp"
 
 class LightSensor : public Sensor {
 public:
