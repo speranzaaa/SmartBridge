@@ -2,7 +2,7 @@
 import serial
 import time
 
-arduino = serial.Serial('COM5', 9600) #Creating our serial object named arduino
+arduino = serial.Serial('COM5', 9600, timeout=.1) #Creating our serial object named arduino
 
 def write_read(x):
     arduino.write(bytes(x, 'utf-8'))
