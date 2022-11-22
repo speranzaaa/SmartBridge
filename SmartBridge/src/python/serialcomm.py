@@ -4,13 +4,15 @@ import time
 import sys
 import serial.tools.list_ports
 
-ports = serial.tools.list_ports.comports()
 
-for port, desc, hwid in sorted(ports):
-        print("{}: {} [{}]".format(port, desc, hwid))
+def chooseport():
+    ports = list(serial.tools.list_ports.comports())
+    for p in ports:
+        print(p)
+    port = input("Enter port number: ")
+    return port
 
-
-"""arduino = serial.Serial('COM5', 9600, timeout=.1)
+arduino = serial.Serial(chooseport() , 9600, timeout=.1)
 
 def write_read(x):
     arduino.write(bytes(x, 'utf-8'))
@@ -20,4 +22,4 @@ def write_read(x):
 while True:
     num = input("Enter a number: ") # Taking input from user
     value = write_read(num)
-    print(value) # printing the value """
+    print(value) # printing the value 
