@@ -6,8 +6,9 @@
 
 extern Status currentStatus;
 
-WaterLevel::WaterLevel(int trigPin, int echoPin, unsigned long period) {
+WaterLevel::WaterLevel(int trigPin, int echoPin, unsigned long period, int ledPin){
     this->sonar = new Sonar(trigPin, echoPin);
+    this->led = new Led(ledPin);
     this->init(period);
 }
 
@@ -19,8 +20,10 @@ void WaterLevel::toExecute() {
             currentStatus = ALARM;
         } else if (currDistance >= WL_2) {
             currentStatus = PRE_ALARM;
+            led -> turnOn();
         } else {
             currentStatus = NORMAL;
+            led -> turnOn();
         }
     }
     this->elapsedTime = currentTime;
