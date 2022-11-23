@@ -20,8 +20,10 @@ void WaterLevel::toExecute() {
             currentStatus = ALARM;
         } else if (currDistance >= WL_2) {
             currentStatus = PRE_ALARM;
+            led -> turnOn();
         } else {
             currentStatus = NORMAL;
+            led -> turnOn();
         }
     }
     this->elapsedTime = currentTime;
