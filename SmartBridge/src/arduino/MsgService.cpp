@@ -1,23 +1,20 @@
 #include "Arduino.h"
-#include "MsgServiceBT.h"
+#include "MsgService.h"
 
-MsgServiceBT::MsgServiceBT(int rxPin, int txPin) {
-    this->channel = new SoftwareSerial(rxPin, txPin);
+void MsgService::init() {
+    Serial.begin(9600);
+    this->availableMsg = NULL;
+    this->content = NULL;
 }
 
-void MsgServiceBT::init() {
-    this->channel->begin(9600);
-    availableMsg = NULL;
+bool MsgService::sendMsg(Msg msg) {
+    Serial.write(msg.getContent().rawData());
+    Serial.write("\n");
 }
 
-bool MsgServiceBT::sendMsg(Msg msg) {
-    this->channel->write(msg.getContent().rawData());
-    this->channel->write("\n");
-}
-
-bool MsgServiceBT::isMsgAvailable() {
-    while (this->channel->available()) {
-        char ch = this->channel->read();
+bool MsgService::isMsgAvailable() {
+    while (Serial.available()) {
+        char ch = Serial.read();
         if (ch == '\n') {
             char p[this->buffer.length()];
             for (unsigned int i = 0; i < sizeof(p); i++) {
@@ -33,7 +30,7 @@ bool MsgServiceBT::isMsgAvailable() {
     return false;
 }
 
-Msg* MsgServiceBT::receiveMsg() {
+Msg* MsgService::receiveMsg() {
     if (this->availableMsg != NULL) {
         Msg* msg = availableMsg;
         this->availableMsg = NULL;

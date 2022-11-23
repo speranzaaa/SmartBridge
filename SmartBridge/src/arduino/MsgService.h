@@ -2,7 +2,6 @@
 #define __MSGSERVICEBT__
 
 #include "Arduino.h"
-#include "SoftwareSerial.h"
 #include "ardubson.h"
 
 class Msg {
@@ -22,10 +21,9 @@ public:
  * @brief Class used to send and receive messages over serial
  * using BSONObjects
  */
-class MsgServiceBT {
+class MsgService {
     
 public: 
-    MsgServiceBT(int rxPin, int txPin);  
     void init();  
     bool isMsgAvailable();
     Msg* receiveMsg();
@@ -34,9 +32,8 @@ public:
 private:
     BSONObject content;
     Msg* availableMsg;
-    SoftwareSerial* channel;
     String buffer;
-  
+    bool msgAvailable;
 };
 
 #endif
