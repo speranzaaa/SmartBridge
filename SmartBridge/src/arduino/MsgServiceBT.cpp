@@ -19,7 +19,11 @@ bool MsgServiceBT::isMsgAvailable() {
     while (this->channel->available()) {
         char ch = this->channel->read();
         if (ch == '\n') {
-            this->availableMsg = new Msg(BSONObject(this->stringToCArr(this->buffer)));
+            char p[this->buffer.length()];
+            for (unsigned int i = 0; i < sizeof(p); i++) {
+                p[i] = this->buffer[i];
+            }
+            this->availableMsg = new Msg(BSONObject(p));
             this->buffer = "";
             return true;
         } else {
@@ -37,12 +41,4 @@ Msg* MsgServiceBT::receiveMsg() {
     } else {
         return NULL;
     }
-}
-
-char* MsgServiceBT::stringToCArr(String toConvert) {
-    char p[toConvert.length()];
-    for (int i = 0; i < sizeof(p); i++) {
-        p[i] = toConvert[i];
-    }
-    return p;
 }

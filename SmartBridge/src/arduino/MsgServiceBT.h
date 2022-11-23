@@ -32,7 +32,6 @@ public:
     bool sendMsg(Msg msg);
 
 private:
-    char* stringToCArr(String toConvert);
     BSONObject content;
     Msg* availableMsg;
     SoftwareSerial* channel;
