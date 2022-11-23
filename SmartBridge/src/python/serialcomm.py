@@ -22,4 +22,4 @@ def chooseport():
 msgService = MsgService(chooseport(), 9600)
 while True:
     msg = msgService.recv()
-    print({msg})
+    print(f"Current status: {msg['status']}\tBridge Light: {msg['light']}")
