@@ -24,9 +24,17 @@ public:
 class MsgService {
     
 public: 
+    /**
+     * @brief Initializes the message service
+     */
     void init();  
     bool isMsgAvailable();
     Msg* receiveMsg();
+    /**
+     * @brief Sends a message
+     * 
+     * @param msg The message to be sent
+     */
     void sendMsg(Msg msg);
 
 private:
