@@ -5,8 +5,7 @@
 #define BLINKING_TIME 2000
 extern Status currentStatus;
 
-BlinkingLed::BlinkingLed(unsigned long period, int ledPin) {
-    this->init(period);
+BlinkingLed::BlinkingLed(unsigned long period, int ledPin) : Task(period) {
     this->led = new Led(ledPin);
 }
 

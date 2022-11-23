@@ -9,6 +9,12 @@ class Task
 {
     public:
         /**
+         * @brief Construct a new Task object
+         * 
+         * @param period The period of the task.
+         */
+        Task(unsigned long period);
+        /**
          * @brief Method used to call the task execution.
          * 
          */
@@ -20,12 +26,6 @@ class Task
          */
         unsigned long getPeriod();
     protected:
-        /**
-         * @brief Initializes the period of the task.
-         * 
-         * @param period the period of the task in milliseconds.
-         */
-        void init(unsigned long period);
         /**
          * @brief Method that is called on the ticking of the task's period.
          */

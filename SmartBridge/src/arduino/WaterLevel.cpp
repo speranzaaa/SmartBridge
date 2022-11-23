@@ -6,10 +6,9 @@
 
 extern Status currentStatus;
 
-WaterLevel::WaterLevel(int trigPin, int echoPin, unsigned long period, int ledPin){
+WaterLevel::WaterLevel(int trigPin, int echoPin, unsigned long period, int ledPin) : Task(period) {
     this->sonar = new Sonar(trigPin, echoPin);
     this->led = new Led(ledPin);
-    this->init(period);
 }
 
 void WaterLevel::toExecute() {

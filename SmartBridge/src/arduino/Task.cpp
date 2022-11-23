@@ -1,7 +1,8 @@
 #include "Task.h"
 #include <Arduino.h>
 
-void Task::init(unsigned long period) {
+Task::Task(unsigned long period) {
+
     this->period = period;
 }
 

@@ -6,11 +6,10 @@ extern bool debug;
 
 extern Status currentStatus;
 
-SmartLight::SmartLight(int lightPin, int lightSensorPin, int pirPin, int period) {
+SmartLight::SmartLight(int lightPin, int lightSensorPin, int pirPin, int period) : Task(period) {
     this->bridgeLight = new Led(lightPin);
     this->lightSensor = new LightSensor(lightSensorPin);
     this->pir = new Pir(pirPin);
-    this->init(period);
 }
 
 void SmartLight::toExecute() {

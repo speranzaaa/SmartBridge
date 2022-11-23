@@ -2,10 +2,9 @@
 #include <Arduino.h>
 #include "Config.h"
 
-Valve::Valve(int potPin, int servoPin, unsigned long period) {
+Valve::Valve(int potPin, int servoPin, unsigned long period) : Task(period) {
     this->potPin = potPin;
     this->servoPin = servoPin;
-    this->init(period);
 }
 
 void Valve::toExecute() {
