@@ -27,12 +27,12 @@ public:
     void init();  
     bool isMsgAvailable();
     Msg* receiveMsg();
-    bool sendMsg(Msg msg);
+    void sendMsg(Msg msg);
 
 private:
     BSONObject content;
     Msg* availableMsg;
-    String buffer;
+    String buffer = "";
     bool msgAvailable;
 };
 

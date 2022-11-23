@@ -3,13 +3,13 @@
 
 void MsgService::init() {
     Serial.begin(9600);
+    Serial.setTimeout(1);
     this->availableMsg = NULL;
     this->content = NULL;
 }
 
-bool MsgService::sendMsg(Msg msg) {
-    Serial.write(msg.getContent().rawData());
-    Serial.write("\n");
+void MsgService::sendMsg(Msg msg) {
+    Serial.println(msg.getContent().jsonString());
 }
 
 bool MsgService::isMsgAvailable() {

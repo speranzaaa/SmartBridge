@@ -1,18 +1,20 @@
 #include <Arduino.h>
-#include "BlinkingLed.h"
 #include "Config.h"
+#include "MsgService.h"
+#include "ardubson.h"
 bool debug = false;
 
 Status currentStatus = NORMAL;
-int x;
+MsgService service;
 
 void setup() {
-    Serial.begin(9600);
-  Serial.setTimeout(1);
+    service.init();
 }
 
 void loop() {
-    while (!Serial.available());
-    x = Serial.readString().toInt();
-    Serial.print(x + 1);
+    BSONObjBuilder builder;
+    builder.append("hello", "world");
+    BSONObject msg = builder.obj();
+    service.sendMsg(msg);
+    delay(1000);
 }

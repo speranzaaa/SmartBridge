@@ -1,4 +1,4 @@
-import bson
+import json
 import serial
 
 class MsgService:
@@ -8,11 +8,15 @@ class MsgService:
         self.ser = serial.Serial(port, baudrate)
 
     def send(self, msg):
-        msg = bson.dumps(msg)
+        msg = json.dumps(msg)
         self.ser.write(msg)
         self.ser.write('\n')
 
     def recv(self):
-        msg = self.ser.read_until('\n')
-        msg = bson.loads(msg)
-        return msg
+        msg = b""
+        while (True):
+            c = self.ser.read()
+            if (c == b'\n'):
+                return json.loads(msg.decode('UTF-8'))
+            else:
+                msg += c
