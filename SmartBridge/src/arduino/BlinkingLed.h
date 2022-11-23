@@ -24,7 +24,7 @@ protected:
     void toExecute();
 
 private:
-    Led led;
+    Led* led;
     unsigned long lastActionTime = 0;
     /**
      * @brief used to turn on the led when the status switches from normal to pre-alarm

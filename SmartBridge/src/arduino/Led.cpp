@@ -2,12 +2,6 @@
 #include "Arduino.h"
 
 Led::Led(int pin) {
-    this->setPin(pin);
-}
-
-Led::Led() {}
-
-void Led::setPin(int pin) {
     this->pin = pin;
     pinMode(pin, OUTPUT);
     this->turnOff();
