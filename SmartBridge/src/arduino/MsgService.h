@@ -1,5 +1,5 @@
-#ifndef __MSGSERVICEBT__
-#define __MSGSERVICEBT__
+#ifndef __MSGSERVICE__
+#define __MSGSERVICE__
 
 #include "Arduino.h"
 #include "ardubson.h"
