@@ -3,6 +3,7 @@
 
 #include "Task.h"
 #include "ServoMotorImpl.h"
+#include "Pot.h"
 
 class Valve : public Task {
 public:
@@ -13,11 +14,11 @@ protected:
     void toExecute();
 
 private:
-    int potPin;
     int servoPin;
     int pos;   
     int delta;
     ServoMotor* servo;
+    Pot* pot;
 };
 
 #endif

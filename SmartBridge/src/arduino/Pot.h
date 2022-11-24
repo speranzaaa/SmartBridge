@@ -1,12 +1,10 @@
 #ifndef __POT_H__
 #define __POT_H__
 
-#include "Sensor.hpp"
-
 /**
  * @brief Sensor class describing a potentiometer
  */
-class Pot : public Sensor {
+class Pot {
 public:
     /**
      * @brief Construct a new Pot object

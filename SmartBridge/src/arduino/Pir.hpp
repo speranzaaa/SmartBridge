@@ -1,14 +1,11 @@
 #ifndef __PIR_H__
 #define __PIR_H__
 
-#include "Sensor.hpp"
-
 /**
  * @brief Class that controls a pir sensor
  * 
  */
-class Pir : public Sensor
-{
+class Pir {
 private:
     const unsigned long CALIBRATION_TIME = 10000;
     unsigned int pin;

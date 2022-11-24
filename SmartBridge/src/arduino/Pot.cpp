@@ -12,6 +12,9 @@ Pot::Pot(int potPin) {
 
 int Pot::getValveValue() {
     int value = analogRead(this->pin);
+    Serial.println("ciaoooo");
     long valveRad = map(value, POT_LOW_BOUND, POT_UP_BOUND, VALVE_LOW_BOUND, VALVE_UP_BOUND);
+    Serial.println(valveRad);
+    Serial.println(value);
     return (int)valveRad;
 }

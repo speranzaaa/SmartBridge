@@ -1,8 +1,7 @@
 #ifndef __LIGHT_SENSOR_H__
 #define __LIGHT_SENSOR_H__
-#include "Sensor.hpp"
 
-class LightSensor : public Sensor {
+class LightSensor {
 public:
     LightSensor(int pin);
     ~LightSensor();

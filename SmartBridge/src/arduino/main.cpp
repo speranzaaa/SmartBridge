@@ -2,17 +2,23 @@
 #include "Config.h"
 #include "MsgService.h"
 #include "ArduinoJson.h"
+#include "Valve.h"
+#include "Task.h"
+
 bool debug = false;
 
-Status currentStatus = NORMAL;
-bool manual = false; 
+Status currentStatus = ALARM;
+bool manual = true; 
 double waterDistance;
-MsgService service;
+
+Task* valve;
 
 void setup() {
-    service.init();
+    Serial.begin(9600);
+    valve = new Valve(A0, 6, 100);
 }
 
 void loop() {
-
+    valve->tick();
+    delay(50);
 }

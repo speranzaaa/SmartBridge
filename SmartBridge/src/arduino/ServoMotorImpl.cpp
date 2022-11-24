@@ -14,5 +14,5 @@ void ServoMotorImpl::setPosition(int angle){
 }
 
 void ServoMotorImpl::off(){
-  motor.detach();    
+  motor.detach();
 }

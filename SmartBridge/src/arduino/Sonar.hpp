@@ -1,8 +1,6 @@
 #ifndef __SONAR_H__
 #define __SONAR_H__
 
-#include "Sensor.hpp"
-
 class Sonar
 {
 private:
