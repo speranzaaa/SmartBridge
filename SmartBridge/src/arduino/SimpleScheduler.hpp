@@ -2,18 +2,16 @@
 #define __SIMPLE_SCHEDULER_H
 
 #include "Scheduler.hpp"
-
-#define MAX_TASKS 10
+#include "LinkedTaskList.hpp"
 
 class SimpleScheduler : public Scheduler {
 public:
+    SimpleScheduler();
     void schedule();
     void addTask(Task* task);
 private: 
+    TaskList* taskList;
     unsigned long period;
-    Task* tasks[MAX_TASKS];
-    unsigned int nTasks = 0;
-    void computePeriod();
     unsigned long gcd(unsigned long a, unsigned long b);
 };
 
