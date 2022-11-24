@@ -1,23 +1,19 @@
-#include "SimpleScheduler.hpp"
+#include "simpleScheduler.hpp"
+
+SimpleScheduler::SimpleScheduler() {
+    this->taskList = new LinkedTaskList();
+}
 
 void SimpleScheduler::schedule() {
 
 }
 
 void SimpleScheduler::addTask(Task* task) {
-    if(nTasks == 0) {
-        tasks[0] = task;
-        this->nTasks++;
+    this->taskList->addTask(task);
+    if(taskList->getSize() == 1) {
         this->period = task->getPeriod(); 
-    }
-}
-
-void SimpleScheduler::computePeriod() {
-    if(nTasks == 1) {
-        this->period = tasks[0]->getPeriod();
-    } else if (nTasks > 1) {
-        
-        for(int i = 0; i<nTasks; i++);
+    } else {
+        this->period = gcd(this->period, task->getPeriod());
     }
 }
 
