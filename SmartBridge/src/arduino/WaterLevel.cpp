@@ -17,12 +17,13 @@ void WaterLevel::toExecute() {
         double currDistance = this->sonar->getDistance();
         if (currDistance >= WL_MAX) {
             currentStatus = ALARM;
+            this->led->turnOff();
         } else if (currDistance >= WL_2) {
             currentStatus = PRE_ALARM;
-            led -> turnOn();
+            this->led->turnOn();
         } else {
             currentStatus = NORMAL;
-            led -> turnOn();
+            this->led->turnOn();
         }
     }
     this->elapsedTime = currentTime;
