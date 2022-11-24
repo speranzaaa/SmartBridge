@@ -1,5 +1,6 @@
 #ifndef LINKED_TASK_LIST_H
 #define LINKED_TASK_LIST_H
+#include <Arduino.h>
 
 #include "TaskList.hpp"
 

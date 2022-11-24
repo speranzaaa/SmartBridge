@@ -1,4 +1,4 @@
-#include "simpleScheduler.hpp"
+#include "SimpleScheduler.hpp"
 
 SimpleScheduler::SimpleScheduler() {
     this->taskList = new LinkedTaskList();

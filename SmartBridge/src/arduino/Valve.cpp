@@ -1,11 +1,12 @@
 #include "Valve.h"
 #include <Arduino.h>
 #include "Config.h"
-#include "ServoMotorImpl.h"
+// #include "EnableInterrupt.h"
 
 extern Status currentStatus;
-extern bool manual;
+extern volatile bool manual;
 extern double waterDistance;
+
 
 Valve::Valve(int potPin, int servoPin, unsigned long period) : Task(period) {
     this->servoPin = servoPin;
@@ -19,11 +20,10 @@ void Valve::toExecute() {
         switch (manual)
         {
         case false:
-
+            // TODO Automatic valve opening
             break;
         
         case true:
-        Serial.println("Valve::toExecute() - manual");
             this->servo.write(this->pot->getValveValue());
             break;
         }
