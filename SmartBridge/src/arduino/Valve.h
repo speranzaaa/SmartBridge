@@ -17,7 +17,7 @@ private:
     int servoPin;
     int pos;   
     int delta;
-    ServoMotor* servo;
+    Servo servo;
     Pot* pot;
 };
 

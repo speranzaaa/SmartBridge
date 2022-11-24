@@ -3,6 +3,7 @@
 
 #define WL_MAX 3.0  // Threshold for ALARM
 #define WL_2 5.0    // Threshold for PRE_ALARM
+#define POT_PIN A0
 
 enum Status {
     NORMAL, 

@@ -1,17 +1,13 @@
 #ifndef __POT_H__
 #define __POT_H__
 
+#include <Arduino.h>
+
 /**
  * @brief Sensor class describing a potentiometer
  */
 class Pot {
 public:
-    /**
-     * @brief Construct a new Pot object
-     * 
-     * @param potPin the pin of the potentiometer
-     */
-    Pot(int potPin);
     /**
      * @brief Get the value the the value should
      * be opened at 
@@ -20,9 +16,6 @@ public:
      * opened at, in degrees from 0 to 180
      */
     int getValveValue();
-
-private:
-    int pin;
 };
 
 #endif
