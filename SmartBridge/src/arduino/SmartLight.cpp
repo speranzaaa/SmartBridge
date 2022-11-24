@@ -1,7 +1,6 @@
 #include "SmartLight.h"
 #include <Arduino.h>
 #include "Config.h"
-extern bool debug;
 #define LIGHT_TIME 10000
 
 extern Status currentStatus;
@@ -19,20 +18,28 @@ void SmartLight::toExecute() {
     case PRE_ALARM:
         // If movement detected, turn light on based on light level and stay on for LIGHT_TIME
         if (!this->lightSensor->isDay()) {
-            if (debug) Serial.println("Night detected, turning off bridge light.");
+            #ifdef __DEBUG__
+            Serial.println("Night detected, turning off bridge light.");
+            #endif
             this->bridgeLight->turnOff();
         } else if (this->pir->isDetected() && this->lightSensor->isDay()) {
-            if (debug) Serial.println("Movement detected during day, turning on brigde ligth.");
+            #ifdef __DEBUG__
+            Serial.println("Movement detected during day, turning on brigde ligth.");
+            #endif
             this->timeDetected = currentTime;
             this->bridgeLight->turnOn();
         } else if (currentTime - this->timeDetected >= LIGHT_TIME) {
-            if (debug) Serial.println("Light time expired, turning off bridge light.");
+            #ifdef __DEBUG__
+            Serial.println("Light time expired, turning off bridge light.");
+            #endif
             this->bridgeLight->turnOff();
         }
         break;
     
     case ALARM:
-        if (debug) Serial.println("Alarm state, turning off brigde light.");
+        #ifdef __DEBUG__
+        Serial.println("Alarm state, turning off brigde light.");
+        #endif
         this->bridgeLight->turnOff();
         break;
     }

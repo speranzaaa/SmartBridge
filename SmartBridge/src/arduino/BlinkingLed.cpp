@@ -1,5 +1,4 @@
 #include "BlinkingLed.h"
-#define __DEBUG__
 #include <Arduino.h>
 #include "Config.h"
 #define BLINKING_TIME 2000
@@ -16,26 +15,26 @@ void BlinkingLed::toExecute() {
         this->led->turnOff();
         this->wasNormal = true;
         #ifdef __DEBUG__
-            Serial.println("Status is normal, turning off red led.");
+        Serial.println("Status is normal, turning off red led.");
         #endif
         break;
 
     case PRE_ALARM:
         if (this->led->isOn() && currentTime - this->lastActionTime >= BLINKING_TIME) {
             #ifdef __DEBUG__
-                Serial.println("Pre-alarm status, turning off red led.");
+            Serial.println("Pre-alarm status, turning off red led.");
             #endif
             this->led->turnOff();
             this->lastActionTime = currentTime;
         } else if (!this->led->isOn() && currentTime - this->lastActionTime >= BLINKING_TIME) {
             #ifdef __DEBUG__
-                Serial.println("Pre-alarm status, turning on red led.");
+            Serial.println("Pre-alarm status, turning on red led.");
             #endif
             this->led->turnOn();
             this->lastActionTime = currentTime;
         } else if (this->wasNormal && !this->led->isOn()) {
             #ifdef __DEBUG__
-                Serial.println("Pre-alarm status, turning on red led.");
+            Serial.println("Pre-alarm status, turning on red led.");
             #endif
             this->led->turnOn();
             this->lastActionTime = currentTime;
@@ -45,7 +44,7 @@ void BlinkingLed::toExecute() {
 
     case ALARM:
         #ifdef __DEBUG__
-            Serial.println("Alarm status, turning on red led.");
+        Serial.println("Alarm status, turning on red led.");
         #endif
         this->led->turnOn();
         this->wasNormal = false;
