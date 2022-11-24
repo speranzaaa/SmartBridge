@@ -2,20 +2,25 @@
 #include <Arduino.h>
 #include "Config.h"
 
+extern Status currentStatus;
+extern bool manual;
+extern double waterDistance;
+
 Valve::Valve(int potPin, int servoPin, unsigned long period) : Task(period) {
     this->potPin = potPin;
     this->servoPin = servoPin;
 }
 
 void Valve::toExecute() {
-    servo->on();
-    for (int i = 0; i < 180; i++) {
-        Serial.println(pos);
-        servo->setPosition(pos);           
-        pos += delta;
+    if (currentStatus == ALARM) {
+        switch (manual)
+        {
+        case false:
+
+            break;
+        
+        case true:
+            break;
+        }
     }
-    servo->off();
-    pos -= delta;
-    delta = -delta;
-    delay(1000);
 }
