@@ -32,3 +32,9 @@ void LinkedTaskList::addTask(Task* task) {
         this->last = node;
     }
 }
+
+void LinkedTaskList::forEach(TaskConsumer* taskConsumer) {
+    for(Node* node = this->first; node != NULL; node = node->next) {
+        taskConsumer->consume(node->task);
+    }
+}

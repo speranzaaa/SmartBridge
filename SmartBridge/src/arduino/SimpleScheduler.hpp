@@ -12,6 +12,8 @@ public:
 private: 
     TaskList* taskList;
     unsigned long period;
+    unsigned long lastTick;
+    void waitTick();
     unsigned long gcd(unsigned long a, unsigned long b);
 };
 

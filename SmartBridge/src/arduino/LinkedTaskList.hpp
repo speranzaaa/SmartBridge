@@ -10,6 +10,7 @@ public:
     bool isEmpty();
     int getSize();
     void addTask(Task* task);
+    virtual void forEach(TaskConsumer* taskConsumer);
 
 private:
     struct Node {
