@@ -16,10 +16,14 @@ void WaterLevel::toExecute() {
     unsigned long currentTime = millis();
     if (currentTime - this->elapsedTime >= this->getPeriod()) {
         double currDistance = this->sonar->getDistance();
-        if (currDistance >= WL_MAX) {
+        #ifdef __DEBUG__
+        Serial.print("Current water level: ");
+        Serial.println(currDistance);
+        #endif
+        if (currDistance <= WL_MAX) {
             currentStatus = ALARM;
             this->led->turnOff();
-        } else if (currDistance >= WL_2) {
+        } else if (currDistance <= WL_2) {
             currentStatus = PRE_ALARM;
             this->led->turnOn();
         } else {

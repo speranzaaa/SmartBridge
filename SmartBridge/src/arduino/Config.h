@@ -1,8 +1,8 @@
 #ifndef __CONFIG_H__
 #define __CONFIG_H__
 
-#define WL_MAX 3.0  // Threshold for ALARM
-#define WL_2 5.0    // Threshold for PRE_ALARM
+#define WL_MAX 0.3  // Threshold for ALARM
+#define WL_2 0.5    // Threshold for PRE_ALARM
 #define POT_PIN A0
 
 enum Status {
