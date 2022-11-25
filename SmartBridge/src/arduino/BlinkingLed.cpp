@@ -2,10 +2,12 @@
 #include <Arduino.h>
 #include "Config.h"
 #define BLINKING_TIME 2000
+#define __DEBUG__
 extern Status currentStatus;
 
-BlinkingLed::BlinkingLed(unsigned long period, int ledPin) : Task(period) {
+BlinkingLed::BlinkingLed(int ledPin, unsigned long period) : Task(period) {
     this->led = new Led(ledPin);
+    this->wasNormal = true;
 }
 
 void BlinkingLed::toExecute() {
@@ -32,7 +34,7 @@ void BlinkingLed::toExecute() {
             #endif
             this->led->turnOn();
             this->lastActionTime = currentTime;
-        } else if (this->wasNormal && !this->led->isOn()) {
+        } else if (this->wasNormal) {
             #ifdef __DEBUG__
             Serial.println("Pre-alarm status, turning on red led.");
             #endif

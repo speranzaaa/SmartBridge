@@ -16,8 +16,6 @@ Valve::Valve(int potPin, int servoPin, unsigned long period) : Task(period) {
 }
 
 void Valve::toExecute() {
-    Serial.println("Valve::toExecute()");
-
     if (currentStatus == ALARM) {
         switch (manual)
         {
@@ -25,7 +23,7 @@ void Valve::toExecute() {
             if (waterDistance == 0) {
                 valveOpening = 180;
             } else {
-                valveOpening = 180*(waterDistance)/WL_MAX;
+                valveOpening = 180-(180*(waterDistance)/(WL_MAX));
             };
             this->servo.write(valveOpening);
             break;

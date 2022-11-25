@@ -20,7 +20,6 @@ void WaterLevel::toExecute() {
         #ifdef __DEBUG__
         Serial.print("Current water level: ");
         Serial.println(currDistance);
-        Serial.println(millis());
         #endif
         if (currDistance <= WL_MAX) {
             currentStatus = ALARM;

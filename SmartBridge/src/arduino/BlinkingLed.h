@@ -18,7 +18,7 @@ public:
      * @param period the period with which the task should be ran.
      * @param ledPin the pin number of the led the task will use.
      */
-    BlinkingLed(unsigned long period, int ledPin);
+    BlinkingLed(int ledPin, unsigned long period);
 
 protected:
     void toExecute();
@@ -29,7 +29,7 @@ private:
     /**
      * @brief used to turn on the led when the status switches from normal to pre-alarm
      */
-    bool wasNormal = false;
+    bool wasNormal;
 };
 
 #endif
