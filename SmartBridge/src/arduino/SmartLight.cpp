@@ -17,14 +17,14 @@ void SmartLight::toExecute() {
     case NORMAL:
     case PRE_ALARM:
         // If movement detected, turn light on based on light level and stay on for LIGHT_TIME
-        if (!this->lightSensor->isDay()) {
+        if (this->lightSensor->isDay()) {
             #ifdef __DEBUG__
-            Serial.println("Night detected, turning off bridge light.");
+            Serial.println("Day detected, turning off bridge light.");
             #endif
             this->bridgeLight->turnOff();
-        } else if (this->pir->isDetected() && this->lightSensor->isDay()) {
+        } else if (this->pir->isDetected() && !this->lightSensor->isDay()) {
             #ifdef __DEBUG__
-            Serial.println("Movement detected during day, turning on brigde ligth.");
+            Serial.println("Movement detected during night, turning on brigde light.");
             #endif
             this->timeDetected = currentTime;
             this->bridgeLight->turnOn();

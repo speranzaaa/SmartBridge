@@ -1,8 +1,7 @@
 #include "LightSensor.h"
 #include <Arduino.h>
 #include <string.h>
-#define DAYLIGHT 50
-extern bool debug;
+#define DAYLIGHT 400
 
 LightSensor::LightSensor(int pin) {
     this->pin = pin;
@@ -11,12 +10,12 @@ LightSensor::LightSensor(int pin) {
 
 bool LightSensor::isDay() {
     int lightLevel = this->getLightLevel();
-    if (debug) {
+    #ifdef __DEBUG__
         Serial.print("light level detected: ");
         Serial.print(lightLevel);
         Serial.print(", daylight threshold: ");
-        Serial.print(DAYLIGHT);
-    }
+        Serial.println(DAYLIGHT);
+    #endif
     return lightLevel > DAYLIGHT;
 }
 
