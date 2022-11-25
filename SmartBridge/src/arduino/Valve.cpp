@@ -6,6 +6,7 @@
 extern Status currentStatus;
 extern volatile bool manual;
 extern double waterDistance;
+extern int valveOpening;
 
 
 Valve::Valve(int potPin, int servoPin, unsigned long period) : Task(period) {
