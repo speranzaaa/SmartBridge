@@ -20,7 +20,6 @@ void LCD::toExecute() {
         this->lcd->clear();
         this->lcd->off();
         this->isOn = false;
-        Serial.println(this->isOn);
         break;
     
     case PRE_ALARM:
