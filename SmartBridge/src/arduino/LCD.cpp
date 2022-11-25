@@ -14,12 +14,14 @@ LCD::LCD ( unsigned long period ) : Task ( period ) {
 }
 
 void LCD::toExecute() {
+    Serial.println("LCD::toExecute()");
     switch (currentStatus)
     {
     case NORMAL:
         this->lcd->clear();
         this->lcd->off();
         this->isOn = false;
+        Serial.println(this->isOn);
         break;
     
     case PRE_ALARM:
@@ -52,6 +54,4 @@ void LCD::toExecute() {
         this->lcd->print(valveOpening);
         break;
     }
-
 }
-

@@ -2,7 +2,7 @@
 #define __VALVE_H__
 
 #include "Task.h"
-#include "ServoMotorImpl.h"
+#include <Servo.h>
 #include "Pot.h"
 
 class Valve : public Task {

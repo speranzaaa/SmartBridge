@@ -1,6 +1,7 @@
 #include "WaterLevel.h"
 #include "Config.h"
 #include <Arduino.h>
+#define __DEBUG
 
 extern Status currentStatus;
 extern double waterDistance;
