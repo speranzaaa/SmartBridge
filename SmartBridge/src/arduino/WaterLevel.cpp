@@ -1,7 +1,7 @@
 #include "WaterLevel.h"
 #include "Config.h"
 #include <Arduino.h>
-#define __DEBUG
+#define __DEBUG__
 
 extern Status currentStatus;
 extern double waterDistance;
@@ -20,16 +20,20 @@ void WaterLevel::toExecute() {
         #ifdef __DEBUG__
         Serial.print("Current water level: ");
         Serial.println(currDistance);
+        Serial.println(millis());
         #endif
         if (currDistance <= WL_MAX) {
             currentStatus = ALARM;
             this->led->turnOff();
+            this->setPeriod(PE_ALARM);
         } else if (currDistance <= WL_2) {
             currentStatus = PRE_ALARM;
             this->led->turnOn();
+            this->setPeriod(PE_PREALARM);
         } else {
             currentStatus = NORMAL;
             this->led->turnOn();
+            this->setPeriod(PE_NORMAL);
         }
         waterDistance = currDistance;
     }

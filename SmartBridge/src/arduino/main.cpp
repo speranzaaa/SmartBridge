@@ -5,6 +5,7 @@
 #include "Task.h"
 #include "EnableInterrupt.h"
 #include "ButtonInterrupt.h"
+#include "ButtonInterrupt.h"
 #include "WaterLevel.h"
 #include "LCD.h"
 
@@ -12,7 +13,7 @@ bool debug = false;
 Servo servo;
 
 Status currentStatus = NORMAL;
-volatile bool manual = true;
+volatile bool manual = false;
 int valveOpening = 0;
 double waterDistance;
 
@@ -22,9 +23,9 @@ Task* lcd;
 
 void setup() {
     Serial.begin(9600);
-    valve = new Valve(A0, 11, 200);
-    pinMode(11, OUTPUT);
+    valve = new Valve(A0, 11, 500);
     waterLevel = new WaterLevel(7, 8, 1000, 13);
+    enableInterrupt(2, buttonInt, HIGH);
     lcd = new LCD(1000);
 }
 

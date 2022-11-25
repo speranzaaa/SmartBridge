@@ -30,6 +30,7 @@ class Task
          * @brief Method that is called on the ticking of the task's period.
          */
         virtual void toExecute() = 0;
+        void setPeriod(unsigned long period);
     private:
         unsigned long period;
         unsigned long lastExecuted = 0;

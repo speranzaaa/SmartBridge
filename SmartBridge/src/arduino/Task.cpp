@@ -20,3 +20,7 @@ void Task::tick() {
         this->lastExecuted = currentTime;
     }
 }
+
+void Task::setPeriod(unsigned long period) {
+    this->period = period;
+}
