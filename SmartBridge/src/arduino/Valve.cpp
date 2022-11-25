@@ -11,6 +11,7 @@ extern int valveOpening;
 
 Valve::Valve(int potPin, int servoPin, unsigned long period) : Task(period) {
     this->servoPin = servoPin;
+    this->servo.attach(this->servoPin);
     this->pot = new Pot();
 }
 
@@ -23,20 +24,19 @@ void Valve::toExecute() {
         case false:
             if (waterDistance == 0) {
                 valveOpening = 180;
-                //this->servo.write(97);
-                Serial.println("VALARM - AUTO");
-                break;
             } else {
                 valveOpening = 180*(waterDistance)/WL_MAX;
-                this->servo.attach(this->servoPin);
-                this->servo.write(valveOpening);
-                this->servo.detach();
-                break;
             };
+            this->servo.write(valveOpening);
+            break;
         case true:
-            this->servo.write(this->pot->getValveValue());
+            valveOpening = this->pot->getValveValue();
+            this->servo.write(valveOpening);
             break;
         }
+    } else {
+        valveOpening = 0;
+        this->servo.write(valveOpening);
     }
 }
 
