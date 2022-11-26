@@ -6,7 +6,6 @@
 
 /**
  * @brief Class used to send and receive messages over serial
- * using BSONObjects
  */
 class MsgService {
     
@@ -20,7 +19,7 @@ public:
      * 
      * @param msg The message to be sent
      */
-    void sendMsg(DynamicJsonDocument* msg);
+    void sendMsg(String msg);
 };
 
 #endif
