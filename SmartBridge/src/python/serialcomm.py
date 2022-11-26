@@ -2,6 +2,7 @@
 import serial
 import time
 import sys
+from os import system, name
 import serial.tools.list_ports
 from MsgService import MsgService
 import bson
@@ -14,6 +15,12 @@ def chooseport():
     port = int(input("Enter port number: "))
     return str.split(str(ports[port]))[0]
 
+def clear():
+    if name == 'nt':
+        _ = system('cls')
+    else:
+        _ = system('clear')
+
 # def write_read(x):
 #     arduino.write(bytes(x, 'utf-8'))
 #     time.sleep(0.05)
@@ -22,4 +29,5 @@ def chooseport():
 msgService = MsgService(chooseport(), 9600)
 while True:
     msg = msgService.recv()
-    print(f"Current status: {msg['status']}\tBridge Light: {msg['light']}")
+    clear()
+    print(f"Current status: {msg[0]}\tBridge Light: {msg[1]}")

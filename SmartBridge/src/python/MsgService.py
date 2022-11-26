@@ -17,6 +17,6 @@ class MsgService:
         while (True):
             c = self.ser.read()
             if (c == b'\n'):
-                return json.loads(msg.decode('UTF-8'))
+                return msg.decode('UTF-8').split(" ")
             else:
                 msg += c

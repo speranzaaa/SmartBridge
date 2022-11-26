@@ -7,7 +7,9 @@ void MsgService::init() {
     Serial.setTimeout(1);
 }
 
-void MsgService::sendMsg(DynamicJsonDocument* msg) {
-    serializeJson(*msg, Serial);
+void MsgService::sendMsg(String msg) {
+    for (auto &ch : msg) {
+        Serial.print(ch);
+    }
     Serial.print('\n');
 }

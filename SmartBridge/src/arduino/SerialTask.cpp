@@ -1,6 +1,5 @@
 #include "SerialTask.h"
 #include "Arduino.h"
-#include "ArduinoJson.h"
 #include "Config.h"
 
 extern Status currentStatus;
@@ -24,8 +23,5 @@ void SerialTask::toExecute() {
         break;
     }
     String light = currentStatus == ALARM ? "OFF" : "ON";
-    DynamicJsonDocument doc(1024);
-    doc["status"] = status;
-    doc["light"] = light;
-    this->service->sendMsg(&doc);
+    this->service->sendMsg(status + " " + light);
 }

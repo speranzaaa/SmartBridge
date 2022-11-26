@@ -4,6 +4,7 @@
 #define LIGHT_TIME 10000
 
 extern Status currentStatus;
+extern bool isLightOn;
 
 SmartLight::SmartLight(int lightPin, int lightSensorPin, int pirPin, int period) : Task(period) {
     this->bridgeLight = new Led(lightPin);
@@ -22,17 +23,20 @@ void SmartLight::toExecute() {
             Serial.println("Day detected, turning off bridge light.");
             #endif
             this->bridgeLight->turnOff();
+            isLightOn = false;
         } else if (this->pir->isDetected() && !this->lightSensor->isDay()) {
             #ifdef __DEBUG__
             Serial.println("Movement detected during night, turning on brigde light.");
             #endif
             this->timeDetected = currentTime;
             this->bridgeLight->turnOn();
+            isLightOn = true;
         } else if (currentTime - this->timeDetected >= LIGHT_TIME) {
             #ifdef __DEBUG__
             Serial.println("Light time expired, turning off bridge light.");
             #endif
             this->bridgeLight->turnOff();
+            isLightOn = false;
         }
         break;
     
@@ -41,6 +45,7 @@ void SmartLight::toExecute() {
         Serial.println("Alarm state, turning off brigde light.");
         #endif
         this->bridgeLight->turnOff();
+        isLightOn = false;
         break;
     }
 }
