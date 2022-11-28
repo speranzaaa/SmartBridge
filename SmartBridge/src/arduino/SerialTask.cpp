@@ -3,6 +3,7 @@
 #include "Config.h"
 
 extern Status currentStatus;
+extern double waterDistance;
 
 SerialTask::SerialTask(unsigned long period) : Task(period) {
     this->service = new MsgService();
@@ -23,5 +24,5 @@ void SerialTask::toExecute() {
         break;
     }
     String light = currentStatus == ALARM ? "OFF" : "ON";
-    this->service->sendMsg(status + " " + light);
+    this->service->sendMsg(status + " " + light + " " + String(waterDistance));
 }

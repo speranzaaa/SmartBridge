@@ -1,11 +1,10 @@
 # Importing Libraries
 import serial
-import time
-import sys
 from os import system, name
 import serial.tools.list_ports
 from MsgService import MsgService
-import bson
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 
 
 def chooseport():
@@ -21,13 +20,19 @@ def clear():
     else:
         _ = system('clear')
 
-# def write_read(x):
-#     arduino.write(bytes(x, 'utf-8'))
-#     time.sleep(0.05)
-#     data = arduino.readline()
-#     return data
+history = []
 msgService = MsgService(chooseport(), 9600)
-while True:
-    msg = msgService.recv()
+fig = plt.figure()
+ax1 = fig.add_subplot(1, 1, 1)
+
+def animate(i):
     clear()
-    print(f"Current status: {msg[0]}\tBridge Light: {msg[1]}")
+    msg = msgService.recv()
+    print(f"Current status: {msg[0]}\tBridge Light: {msg[1]}\tWater Level: {msg[2]}")
+    history.append(float(msg[2]))
+    xar = [i for i in range(len(history))]
+    ax1.clear()
+    ax1.plot(xar, history)
+
+ani = animation.FuncAnimation(fig, animate, interval=1000)
+plt.show()
