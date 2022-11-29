@@ -15,3 +15,6 @@ Embedded System and IoT  - Assignment #2 - Smart Bridge
 
 # State Diagram
 [https://lucid.app/lucidchart/f212ed39-6ae4-4d8f-a25e-e558038ddf9d/edit?viewport_loc=-413%2C99%2C2521%2C1587%2C0_0&invitationId=inv_19082a00-fc14-4ee6-a448-7a9272ce4125]
+
+# Report
+[https://it.overleaf.com/8584665597hjhhjpsbkpcj]
