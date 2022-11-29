@@ -2,7 +2,6 @@
 #include <Arduino.h>
 #include "Config.h"
 #define BLINKING_TIME 2000
-#define __DEBUG__
 extern Status currentStatus;
 
 BlinkingLed::BlinkingLed(int ledPin, unsigned long period) : Task(period) {
