@@ -4,6 +4,7 @@
 
 extern Status currentStatus;
 extern double waterDistance;
+extern bool manual;
 
 WaterLevel::WaterLevel(int trigPin, int echoPin, unsigned long period, int ledPin) : Task(period) {
     this->sonar = new Sonar(trigPin, echoPin);
@@ -19,6 +20,9 @@ void WaterLevel::toExecute() {
         Serial.println(currDistance);
         #endif
         if (currDistance <= WL_MAX) {
+            if (currentStatus != ALARM) {
+                manual = false; 
+            }
             currentStatus = ALARM;
             this->led->turnOff();
             this->setPeriod(PE_ALARM);
