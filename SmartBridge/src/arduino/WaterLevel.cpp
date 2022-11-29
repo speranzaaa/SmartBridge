@@ -1,12 +1,9 @@
 #include "WaterLevel.h"
 #include "Config.h"
 #include <Arduino.h>
-#define __DEBUG__
 
 extern Status currentStatus;
 extern double waterDistance;
-
-// TODO change perdiod based on currentStatus
 
 WaterLevel::WaterLevel(int trigPin, int echoPin, unsigned long period, int ledPin) : Task(period) {
     this->sonar = new Sonar(trigPin, echoPin);
