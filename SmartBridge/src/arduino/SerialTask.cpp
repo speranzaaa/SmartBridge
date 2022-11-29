@@ -4,6 +4,7 @@
 
 extern Status currentStatus;
 extern double waterDistance;
+extern bool isLightOn;
 
 SerialTask::SerialTask(unsigned long period) : Task(period) {
     this->service = new MsgService();
@@ -23,6 +24,6 @@ void SerialTask::toExecute() {
         status = "alarm";
         break;
     }
-    String light = currentStatus == ALARM ? "OFF" : "ON";
+    String light = isLightOn ? "ON" : "OFF";
     this->service->sendMsg(status + " " + light + " " + String(waterDistance));
 }
