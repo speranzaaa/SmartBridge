@@ -3,6 +3,7 @@
 
 #define WL_MAX 0.3  // Threshold for ALARM
 #define WL_2 0.5    // Threshold for PRE_ALARM
+#define MAX_DIST 12.6
 #define POT_PIN A0
 #define PE_NORMAL 1000
 #define PE_PREALARM 700
