@@ -25,5 +25,5 @@ void SerialTask::toExecute() {
         break;
     }
     String light = isLightOn ? "ON" : "OFF";
-    this->service->sendMsg(status + " " + light + " " + String(waterDistance));
+    this->service->sendMsg(status + " " + light + " " + String(MAX_DIST - waterDistance));
 }
