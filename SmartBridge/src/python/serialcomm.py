@@ -26,15 +26,16 @@ fig = plt.figure()
 ax1 = fig.add_subplot(1, 1, 1)
 
 def animate(i):
-    clear()
     msg = msgService.recv()
-    print(f"Current status: {msg[0]}\tBridge Light: {msg[1]}\tWater Level: {msg[2]}")
-    if (len(history) > 20):
+    if (len(history) >= 20):
         history.pop(0)
     history.append(float(msg[2]))
     xar = [i for i in range(len(history))]
     ax1.clear()
+    plt.xlabel(f"Current status: {msg[0]}  Bridge Light: {msg[1]}  Water Level: {msg[2]}")
     ax1.plot(xar, history)
 
+clear()
+print("To stop the program close the chart window.")
 ani = animation.FuncAnimation(fig, animate, interval=1000)
 plt.show()
