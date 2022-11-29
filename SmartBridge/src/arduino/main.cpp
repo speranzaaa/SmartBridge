@@ -1,27 +1,55 @@
 #include <Arduino.h>
 #include "Config.h"
-#include "SerialTask.h"
 #include "Task.h"
+#include "SerialTask.h"
 #include "LCD.h"
-
-bool debug = false;
+#include "SimpleScheduler.hpp"
+#include "WaterLevel.h"
+#include "SmartLight.h"
+#include "Valve.h"
+#include "BlinkingLed.h"
+#include "ButtonInterrupt.h"
+#include "EnableInterrupt.h"
 
 Status currentStatus = NORMAL;
 volatile bool manual = false;
 int valveOpening = 0;
-bool isLigthOn = false;
+bool isLightOn = false;
 double waterDistance;
 
+SimpleScheduler* scheduler;
+
 Task* serialTask;
+Task* lcdTask;
+Task* waterLevelTask;
+Task* smartLightTask;
+Task* valveTask;
+Task* blinkingLedTask;
+
 
 void setup() {
-    serialTask = new SerialTask(1000);
+    Serial.begin(9600);
+
+    scheduler = new SimpleScheduler();
+
+    enableInterrupt(2, buttonInt, RISING);
+
+    serialTask = new SerialTask(2000);
+    lcdTask = new LCD(1000);
+    waterLevelTask = new WaterLevel(7, 8, 1000, 12);
+    smartLightTask = new SmartLight(11, A1, 4, 500);
+    valveTask = new Valve(A0, 6, 500);
+    blinkingLedTask = new BlinkingLed(13, 1000);
+    
+    scheduler->addTask(serialTask);
+    scheduler->addTask(lcdTask);
+    scheduler->addTask(waterLevelTask);
+    scheduler->addTask(smartLightTask);
+    scheduler->addTask(valveTask);
+    scheduler->addTask(blinkingLedTask);
 }
 
 void loop() {
-    randomSeed(analogRead(A0));
-    waterDistance = random() % 150;
-    serialTask->tick();
-    delay(500);
+    scheduler->schedule();
 }
 
