@@ -27,7 +27,6 @@ void LCD::toExecute() {
             this->lcd->on();
             this->isOn = true;
         } 
-        this->lcd->on();
         this->lcd->clear();
         this->lcd->setCursor(0,0);
         this->lcd->print("Status: PRE-ALARM");
