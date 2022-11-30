@@ -28,8 +28,6 @@ Task* blinkingLedTask;
 
 
 void setup() {
-    Serial.begin(9600);
-
     scheduler = new SimpleScheduler();
 
     enableInterrupt(2, buttonInt, RISING);
